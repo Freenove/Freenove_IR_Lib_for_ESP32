@@ -1,0 +1,25 @@
+#class (KEYWORD1)
+
+
+Freenove_ESP32_IR_Recv			KEYWORD1
+PROTO_COUNT						KEYWORD1
+ 
+#function and method (KEYWORD2)
+begin					KEYWORD2
+end			            KEYWORD2
+available				KEYWORD2
+nec_available			KEYWORD2
+sony_available			KEYWORD2
+sam_available			KEYWORD2
+rc5_available		    KEYWORD2
+protocol			    KEYWORD2
+data					KEYWORD2
+task					KEYWORD2
+
+ 
+ 
+#constant (LITERAL1)
+#none
+#TYPE_RGB						LITERAL1
+
+
