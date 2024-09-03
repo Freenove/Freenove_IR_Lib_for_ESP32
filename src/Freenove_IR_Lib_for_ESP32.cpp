@@ -102,6 +102,9 @@ void Freenove_ESP32_IR_Recv::task(void){
 	rmt_data_t *rx_items = (rmt_data_t *)ir_data;
 	uint32_t rcode = 0;
 	ir_protocol_type rproto = UNK;
+	//for(int i=0; i<rx_num_symbols;i++)
+	//	Serial.printf("%d: %d %d %d %d\r\n", i, rx_items[i].level0, rx_items[i].duration0, rx_items[i].level1, rx_items[i].duration1);
+	//Serial.printf("\r\n");
 	if (rcode = nec_check(rx_items, rx_num_symbols)) 
 	{
 		rproto = NEC;
