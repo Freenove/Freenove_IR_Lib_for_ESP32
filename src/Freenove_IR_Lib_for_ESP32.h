@@ -77,7 +77,7 @@ private:
 	rmt_reserve_memsize_t ir_memsize;
 	uint32_t              ir_frequency;
 	ir_recv_t             ir_recv_data;
-	const uint8_t         bitMargin = 120;
+	const uint16_t         bitMargin = 300;
 
 	const ir_protocol_t proto[PROTO_COUNT] = {
 	  [UNK] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, "UNK" },
