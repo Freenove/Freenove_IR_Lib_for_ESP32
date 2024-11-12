@@ -94,11 +94,26 @@ uint32_t Freenove_ESP32_IR_Recv::data(void)
 	return ir_recv_data.ir_data;
 }
 
+bool reading_in_progress = false;  // Flag to track reading state
 
 void Freenove_ESP32_IR_Recv::task(void){
 	size_t rx_num_symbols = 64;
-	rmtRead(ir_rx_pin, ir_data, &rx_num_symbols, 1000);
-	while (!rmtReceiveCompleted(ir_rx_pin));
+
+    if (!reading_in_progress) {
+        // Start a new read operation if none is in progress
+        rmtRead(ir_rx_pin, ir_data, &rx_num_symbols, 1000);
+        reading_in_progress = true;  // Set the flag to indicate a read is in progress
+    }
+
+    // Check if the read operation has completed
+    if (rmtReceiveCompleted(ir_rx_pin)) {       
+        // Reset the flag to allow a new read operation in the next call
+        reading_in_progress = false;
+    }
+	else {
+		return;  // Exit early if data is not yet available
+	}
+	
 	rmt_data_t *rx_items = (rmt_data_t *)ir_data;
 	uint32_t rcode = 0;
 	ir_protocol_type rproto = UNK;
